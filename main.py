@@ -16,23 +16,23 @@ def assignment_gce(request):
     """
     
     
-    data1='message1' in request.get_json()      #storing the json payload dictonary
-    data2='message2' in request.get_json()
+    data1='message1' in request.get_json()      #storing the json payload dictionary in data1
+    data2='message2' in request.get_json()      #storing the json payload dictionary in data
     
-    list1=json.loads(data1)
+    list1=json.loads(data1)                     #converting the json array into python list
     list2=json.loads(data2)
     
     
      
   
 
-    res = sorted(list1 + list2)
+    res = sorted(list1 + list2)                 #combining the two lists and then sorting them using the sorted() method
   
 
-    request_json = request.get_json()
-    if request.args and 'message' in request.args:
-        return f'Try again using the JSON payload'
-    elif request_json and 'message' in request_json:
-        return str(res)
+    request_json = request.get_json()               # giving the request.get_json() function a name
+    if request.args and 'message' in request.args:      #checking for arguments via the http url
+        return f'Try again using the JSON payload'      # putting out a message
+    elif request_json and 'message' in request_json:    #checking for json payload input
+        return str(res)                                 #the final string
     else:
         return f'Invalid Input, Try Again!'
